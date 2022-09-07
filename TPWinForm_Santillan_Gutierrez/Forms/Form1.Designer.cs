@@ -29,9 +29,14 @@
         private void InitializeComponent()
         {
             this.btnAgregar = new System.Windows.Forms.Button();
-            this.listView1 = new System.Windows.Forms.ListView();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
+            this.dgvComercio = new System.Windows.Forms.DataGridView();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lblFiltroRapido = new System.Windows.Forms.Label();
+            this.txtboxFiltroRapido = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvComercio)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnAgregar
@@ -44,15 +49,6 @@
             this.btnAgregar.Text = "Agregar Articulo";
             this.btnAgregar.UseVisualStyleBackColor = true;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
-            // 
-            // listView1
-            // 
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(41, 67);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(712, 272);
-            this.listView1.TabIndex = 1;
-            this.listView1.UseCompatibleStateImageBehavior = false;
             // 
             // btnEliminar
             // 
@@ -72,29 +68,71 @@
             this.btnModificar.Text = "Modificar Articulo";
             this.btnModificar.UseVisualStyleBackColor = true;
             // 
+            // dgvComercio
+            // 
+            this.dgvComercio.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvComercio.Location = new System.Drawing.Point(27, 76);
+            this.dgvComercio.Name = "dgvComercio";
+            this.dgvComercio.RowHeadersWidth = 51;
+            this.dgvComercio.RowTemplate.Height = 24;
+            this.dgvComercio.Size = new System.Drawing.Size(708, 297);
+            this.dgvComercio.TabIndex = 4;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(752, 76);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(291, 297);
+            this.pictureBox1.TabIndex = 5;
+            this.pictureBox1.TabStop = false;
+            // 
+            // lblFiltroRapido
+            // 
+            this.lblFiltroRapido.AutoSize = true;
+            this.lblFiltroRapido.Location = new System.Drawing.Point(24, 38);
+            this.lblFiltroRapido.Name = "lblFiltroRapido";
+            this.lblFiltroRapido.Size = new System.Drawing.Size(87, 16);
+            this.lblFiltroRapido.TabIndex = 6;
+            this.lblFiltroRapido.Text = "Filtro Rápido:";
+            // 
+            // txtboxFiltroRapido
+            // 
+            this.txtboxFiltroRapido.Location = new System.Drawing.Point(128, 35);
+            this.txtboxFiltroRapido.Name = "txtboxFiltroRapido";
+            this.txtboxFiltroRapido.Size = new System.Drawing.Size(255, 22);
+            this.txtboxFiltroRapido.TabIndex = 7;
+            // 
             // FormPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1070, 501);
+            this.Controls.Add(this.txtboxFiltroRapido);
+            this.Controls.Add(this.lblFiltroRapido);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.dgvComercio);
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnEliminar);
-            this.Controls.Add(this.listView1);
             this.Controls.Add(this.btnAgregar);
             this.Name = "FormPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Comercio";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvComercio)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.Button btnAgregar;
-        private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnModificar;
+        private System.Windows.Forms.DataGridView dgvComercio;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label lblFiltroRapido;
+        private System.Windows.Forms.TextBox txtboxFiltroRapido;
     }
 }
 

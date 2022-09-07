@@ -42,12 +42,13 @@
             this.txtDescripcion = new System.Windows.Forms.TextBox();
             this.comboMarca = new System.Windows.Forms.ComboBox();
             this.ComboCategoria = new System.Windows.Forms.ComboBox();
+            this.btnCancelar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(290, 380);
+            this.btnGuardar.Location = new System.Drawing.Point(352, 373);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(234, 42);
             this.btnGuardar.TabIndex = 0;
@@ -126,9 +127,9 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(560, 31);
+            this.pictureBox1.Location = new System.Drawing.Point(509, 46);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(184, 178);
+            this.pictureBox1.Size = new System.Drawing.Size(228, 211);
             this.pictureBox1.TabIndex = 8;
             this.pictureBox1.TabStop = false;
             // 
@@ -155,7 +156,9 @@
             // 
             // comboMarca
             // 
+            this.comboMarca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboMarca.FormattingEnabled = true;
+            this.comboMarca.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.comboMarca.Location = new System.Drawing.Point(259, 138);
             this.comboMarca.Name = "comboMarca";
             this.comboMarca.Size = new System.Drawing.Size(121, 24);
@@ -163,17 +166,29 @@
             // 
             // ComboCategoria
             // 
+            this.ComboCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ComboCategoria.FormattingEnabled = true;
             this.ComboCategoria.Location = new System.Drawing.Point(259, 171);
             this.ComboCategoria.Name = "ComboCategoria";
             this.ComboCategoria.Size = new System.Drawing.Size(121, 24);
             this.ComboCategoria.TabIndex = 14;
             // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Location = new System.Drawing.Point(672, 373);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(116, 42);
+            this.btnCancelar.TabIndex = 15;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
             // FormAgregarArticulo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.ComboCategoria);
             this.Controls.Add(this.comboMarca);
             this.Controls.Add(this.txtDescripcion);
@@ -213,5 +228,6 @@
         private System.Windows.Forms.TextBox txtDescripcion;
         private System.Windows.Forms.ComboBox comboMarca;
         private System.Windows.Forms.ComboBox ComboCategoria;
+        private System.Windows.Forms.Button btnCancelar;
     }
 }
