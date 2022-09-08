@@ -28,6 +28,11 @@ namespace Forms
             ventana.ShowDialog();
         }
 
+        private void FormPrincipal_Load(object sender, EventArgs e)
+        {
+            AccesoDatos negocios = new AccesoDatos();
+            dgvComercio.DataSource = negocios.Listar();
 
+        }
     }
 }
