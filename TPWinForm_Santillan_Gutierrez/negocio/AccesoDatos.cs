@@ -83,7 +83,7 @@ namespace negocio
       
             try
             {
-                conexion = new SqlConnection("server=.//SQLEXPRESS; database=CATALOGO_DB; integrated security=true");
+                conexion = new SqlConnection("server=.\\SQLEXPRESS; database=CATALOGO_DB; integrated security=true");
             comando = new SqlCommand();
             comando.CommandText = "Select  Id, Codigo, Nombre, Descripcion From ARTICULOS";
             comando.Connection = conexion;
