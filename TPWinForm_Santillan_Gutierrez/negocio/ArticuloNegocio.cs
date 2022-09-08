@@ -22,7 +22,7 @@ namespace negocio
             {
                 conexion.ConnectionString = "server=.\\SQLEXPRESS; database=CATALOGO_DB; integrated security = true";
                 comando.CommandType = System.Data.CommandType.Text;
-                comando.CommandText = "SELECT CODIGO,NOMBRE,Descripcion,ImagenUrl FROM ARTICULOS";
+                comando.CommandText = "SELECT CODIGO,NOMBRE,Descripcion,ImagenUrl,Precio FROM ARTICULOS";
                 comando.Connection = conexion;  
                 conexion.Open();
 
@@ -34,7 +34,8 @@ namespace negocio
                     art.Nombre = (string)lector["NOMBRE"];
                     art.Descripcion = (string)lector["Descripcion"];
                     art.ImagenUrl = (string)lector["ImagenUrl"];
-                    
+                    art.Precio = (decimal)lector["Precio"];
+
 
                     lista.Add(art);
                 }
