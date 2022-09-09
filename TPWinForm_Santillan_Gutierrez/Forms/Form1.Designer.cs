@@ -79,17 +79,17 @@
             this.dgvComercio.Name = "dgvComercio";
             this.dgvComercio.RowHeadersWidth = 51;
             this.dgvComercio.RowTemplate.Height = 24;
-            this.dgvComercio.Size = new System.Drawing.Size(708, 297);
+            this.dgvComercio.Size = new System.Drawing.Size(718, 297);
             this.dgvComercio.TabIndex = 4;
             this.dgvComercio.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgvComercio_DataError);
             this.dgvComercio.SelectionChanged += new System.EventHandler(this.dgvComercio_SelectionChanged);
             // 
             // picboxArticulo
             // 
-            this.picboxArticulo.Location = new System.Drawing.Point(752, 76);
+            this.picboxArticulo.Location = new System.Drawing.Point(751, 76);
             this.picboxArticulo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.picboxArticulo.Name = "picboxArticulo";
-            this.picboxArticulo.Size = new System.Drawing.Size(291, 297);
+            this.picboxArticulo.Size = new System.Drawing.Size(292, 297);
             this.picboxArticulo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picboxArticulo.TabIndex = 5;
             this.picboxArticulo.TabStop = false;
