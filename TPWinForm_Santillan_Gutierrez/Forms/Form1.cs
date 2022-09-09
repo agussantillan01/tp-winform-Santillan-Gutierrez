@@ -32,10 +32,18 @@ namespace Forms
         private void FormPrincipal_Load(object sender, EventArgs e)
         {
             ArticuloNegocio negocio = new ArticuloNegocio();
-            articuloList = negocio.listar();
-            dgvComercio.DataSource = articuloList;
-            dgvComercio.Columns["ImagenUrl"].Visible = false;
-            cargarImagen(articuloList[0].ImagenUrl);
+            try
+            {
+                articuloList = negocio.listar();
+                dgvComercio.DataSource = articuloList;
+                dgvComercio.Columns["ImagenUrl"].Visible = false;
+                cargarImagen(articuloList[0].ImagenUrl);
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
 
         }
         private void dgvComercio_SelectionChanged(object sender, EventArgs e)
@@ -54,11 +62,23 @@ namespace Forms
             }
             catch (Exception ex)
             {
-                picboxArticulo.Load("https://embacal.com/wp-content/uploads/2018/11/no-photo-available.png");
+                picboxArticulo.Load("https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/681px-Placeholder_view_vector.svg.png");
 
 
             }
         }
 
+        private void dgvComercio_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            if (e.Exception.Message == "DataGridViewComboBoxCell value is not valid.")
+            {
+                object value = dgvComercio.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+                if (!((DataGridViewComboBoxColumn)dgvComercio.Columns[e.ColumnIndex]).Items.Contains(value))
+                {
+                    ((DataGridViewComboBoxColumn)dgvComercio.Columns[e.ColumnIndex]).Items.Add(value);
+                    e.ThrowException = false;
+                }
+            }
+        }
     }
 }

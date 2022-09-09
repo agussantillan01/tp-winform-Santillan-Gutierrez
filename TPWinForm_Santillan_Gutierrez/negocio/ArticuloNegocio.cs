@@ -22,19 +22,29 @@ namespace negocio
             {
                 conexion.ConnectionString = "server=.\\SQLEXPRESS; database=CATALOGO_DB; integrated security = true";
                 comando.CommandType = System.Data.CommandType.Text;
-                comando.CommandText = "SELECT CODIGO,NOMBRE,Descripcion,ImagenUrl,Precio FROM ARTICULOS";
+                comando.CommandText = "SELECT A.CODIGO, A.Nombre,A.Descripcion,M.Descripcion AS Marca,C.Descripcion AS TIPO,A.ImagenUrl, A.Precio FROM ARTICULOS A LEFT JOIN MARCAS M ON M.ID= A.IDMARCA LEFT JOIN CATEGORIAS C ON C.ID= A.IdCategoria\r\n";
                 comando.Connection = conexion;  
                 conexion.Open();
 
                 lector = comando.ExecuteReader();
                 while (lector.Read())
                 {
-                   Articulo art = new Articulo();
+                    Articulo art = new Articulo();
                     art.Codigo = (string)lector["CODIGO"];
                     art.Nombre = (string)lector["NOMBRE"];
                     art.Descripcion = (string)lector["Descripcion"];
                     art.ImagenUrl = (string)lector["ImagenUrl"];
                     art.Precio = (decimal)lector["Precio"];
+
+                    art.Marca = new Marca();
+                    art.Marca.NombreMarca = (string)lector["Marca"];
+
+                    art.Categoria = new Categoria();
+
+                    //SI EL TIPO DE ARTICULO NO ES NULO LO LEE
+                    if (!(lector["TIPO"]is DBNull))
+                    art.Categoria.Tipo = (string)lector["TIPO"];
+
 
 
                     lista.Add(art);
@@ -45,7 +55,7 @@ namespace negocio
             }
             catch (Exception ex)
             {
-
+               
                 throw ex;
             }
             finally
@@ -53,6 +63,13 @@ namespace negocio
                 conexion.Close();
             }
             
+        }
+
+        public void agregar(Articulo articuloNuevo) 
+        {
+            
+
+        
         }
 
     }
