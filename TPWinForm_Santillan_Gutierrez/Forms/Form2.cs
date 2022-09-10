@@ -11,6 +11,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
+
+
 namespace Forms
 {
     public partial class FormAgregarArticulo : Form
@@ -28,6 +30,30 @@ namespace Forms
         private void btnGuardar_Click(object sender, EventArgs e)
         {
 
+            Articulo arti = new Articulo();
+            ArticuloNegocio negocio = new ArticuloNegocio();
+
+
+
+            try
+            {
+                //  arti.Codigo = int.Parse(txtCodigoArticulo.Text);
+                arti.Codigo = txtCodigoArticulo.Text;
+                arti.Nombre = txtNombreArticulo.Text;
+                arti.Descripcion = txtDescripcion.Text;
+
+               negocio.agregar(arti);
+                MessageBox.Show("Agregado Correctamente");
+                Close();
+
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+
+            }
         }
 
 

@@ -133,8 +133,8 @@
             this.pictArticulo.Image = ((System.Drawing.Image)(resources.GetObject("pictArticulo.Image")));
             this.pictArticulo.Location = new System.Drawing.Point(510, 46);
             this.pictArticulo.Name = "pictArticulo";
-            this.pictArticulo.Size = new System.Drawing.Size(232, 227);
-            this.pictArticulo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictArticulo.Size = new System.Drawing.Size(225, 225);
+            this.pictArticulo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictArticulo.TabIndex = 8;
             this.pictArticulo.TabStop = false;
             // 
