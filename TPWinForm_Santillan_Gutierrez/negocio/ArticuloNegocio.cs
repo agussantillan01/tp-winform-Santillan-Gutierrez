@@ -38,7 +38,6 @@ namespace negocio
 
                     art.Marca = new Marca();
                     art.Marca.NombreMarca = (string)lector["Marca"];
-
                     art.Categoria = new Categoria();
 
                     //SI EL TIPO DE ARTICULO NO ES NULO LO LEE
@@ -73,7 +72,9 @@ namespace negocio
 
             try
             {
-              datos.setearConsulta("Insert into ARTICULOS (Codigo, Nombre, Descripcion) values ('"+articuloNuevo.Codigo+"','"+articuloNuevo.Nombre+"','"+articuloNuevo.Descripcion+"')");
+              datos.setearConsulta("Insert into ARTICULOS (Codigo, Nombre, Descripcion, IdMarca, IdCategoria) values ('" + articuloNuevo.Codigo + "','" + articuloNuevo.Nombre + "','" + articuloNuevo.Descripcion + "', @idMarca, @idCategoria)");
+                datos.setearParametro("idMarca", articuloNuevo.Marca.Id);
+                datos.setearParametro("idCategoria", articuloNuevo.Categoria.Id);
                 datos.ejecutarAccion();
 
             }

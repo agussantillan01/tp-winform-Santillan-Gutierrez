@@ -41,8 +41,8 @@
             this.txtCodigoArticulo = new System.Windows.Forms.TextBox();
             this.txtNombreArticulo = new System.Windows.Forms.TextBox();
             this.txtDescripcion = new System.Windows.Forms.TextBox();
-            this.comboMarca = new System.Windows.Forms.ComboBox();
-            this.ComboCategoria = new System.Windows.Forms.ComboBox();
+            this.cboMarca = new System.Windows.Forms.ComboBox();
+            this.cboCategoria = new System.Windows.Forms.ComboBox();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.txtPrecio = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictArticulo)).BeginInit();
@@ -131,7 +131,7 @@
             // pictArticulo
             // 
             this.pictArticulo.Image = ((System.Drawing.Image)(resources.GetObject("pictArticulo.Image")));
-            this.pictArticulo.Location = new System.Drawing.Point(510, 46);
+            this.pictArticulo.Location = new System.Drawing.Point(466, 46);
             this.pictArticulo.Name = "pictArticulo";
             this.pictArticulo.Size = new System.Drawing.Size(225, 225);
             this.pictArticulo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -159,24 +159,24 @@
             this.txtDescripcion.Size = new System.Drawing.Size(121, 22);
             this.txtDescripcion.TabIndex = 12;
             // 
-            // comboMarca
+            // cboMarca
             // 
-            this.comboMarca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboMarca.FormattingEnabled = true;
-            this.comboMarca.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.comboMarca.Location = new System.Drawing.Point(259, 179);
-            this.comboMarca.Name = "comboMarca";
-            this.comboMarca.Size = new System.Drawing.Size(121, 24);
-            this.comboMarca.TabIndex = 13;
+            this.cboMarca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboMarca.FormattingEnabled = true;
+            this.cboMarca.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.cboMarca.Location = new System.Drawing.Point(259, 179);
+            this.cboMarca.Name = "cboMarca";
+            this.cboMarca.Size = new System.Drawing.Size(121, 24);
+            this.cboMarca.TabIndex = 13;
             // 
-            // ComboCategoria
+            // cboCategoria
             // 
-            this.ComboCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ComboCategoria.FormattingEnabled = true;
-            this.ComboCategoria.Location = new System.Drawing.Point(259, 225);
-            this.ComboCategoria.Name = "ComboCategoria";
-            this.ComboCategoria.Size = new System.Drawing.Size(121, 24);
-            this.ComboCategoria.TabIndex = 14;
+            this.cboCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboCategoria.FormattingEnabled = true;
+            this.cboCategoria.Location = new System.Drawing.Point(259, 225);
+            this.cboCategoria.Name = "cboCategoria";
+            this.cboCategoria.Size = new System.Drawing.Size(121, 24);
+            this.cboCategoria.TabIndex = 14;
             // 
             // btnCancelar
             // 
@@ -202,8 +202,8 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.txtPrecio);
             this.Controls.Add(this.btnCancelar);
-            this.Controls.Add(this.ComboCategoria);
-            this.Controls.Add(this.comboMarca);
+            this.Controls.Add(this.cboCategoria);
+            this.Controls.Add(this.cboMarca);
             this.Controls.Add(this.txtDescripcion);
             this.Controls.Add(this.txtNombreArticulo);
             this.Controls.Add(this.txtCodigoArticulo);
@@ -219,6 +219,7 @@
             this.Name = "FormAgregarArticulo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Agregar Articulo";
+            this.Load += new System.EventHandler(this.FormAgregarArticulo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictArticulo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -239,8 +240,8 @@
         private System.Windows.Forms.TextBox txtCodigoArticulo;
         private System.Windows.Forms.TextBox txtNombreArticulo;
         private System.Windows.Forms.TextBox txtDescripcion;
-        private System.Windows.Forms.ComboBox comboMarca;
-        private System.Windows.Forms.ComboBox ComboCategoria;
+        private System.Windows.Forms.ComboBox cboMarca;
+        private System.Windows.Forms.ComboBox cboCategoria;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.TextBox txtPrecio;
     }

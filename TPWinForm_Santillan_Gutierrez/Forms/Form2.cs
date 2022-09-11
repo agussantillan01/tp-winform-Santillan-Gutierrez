@@ -41,6 +41,8 @@ namespace Forms
                 arti.Codigo = txtCodigoArticulo.Text;
                 arti.Nombre = txtNombreArticulo.Text;
                 arti.Descripcion = txtDescripcion.Text;
+                arti.Categoria = (Categoria)cboCategoria.SelectedItem;
+                arti.Marca =  (Marca)cboMarca.SelectedItem;
 
                negocio.agregar(arti);
                 MessageBox.Show("Agregado Correctamente");
@@ -56,6 +58,20 @@ namespace Forms
             }
         }
 
-
+        private void FormAgregarArticulo_Load(object sender, EventArgs e)
+        {
+            CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
+            MarcaNegocio marcaNegocio = new MarcaNegocio();
+            try
+            {
+                cboCategoria.DataSource = categoriaNegocio.listar();
+                cboMarca.DataSource = marcaNegocio.listar();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                
+            }
+        }
     }
 }
