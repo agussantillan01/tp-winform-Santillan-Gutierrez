@@ -29,12 +29,20 @@ namespace negocio
                 lector = comando.ExecuteReader();
                 while (lector.Read())
                 {
+
+                    //CODIGO, NOMBRE, DESCRIPCION, IMAGEN,CATEGORIA, MARCA Y PRECIO PERMITEN NULOS
+                    // CATEGORIA Y MARCA NO ES POSIBLE QUE SE CARGUEN DE MANERA NULA
                     Articulo art = new Articulo();
-                    art.Codigo = (string)lector["CODIGO"];
-                    art.Nombre = (string)lector["NOMBRE"];
-                    art.Descripcion = (string)lector["Descripcion"];
+                    if (!(lector["CODIGO"] is DBNull))
+                        art.Codigo = (string)lector["CODIGO"];
+                    if (!(lector["NOMBRE"] is DBNull))
+                        art.Nombre = (string)lector["NOMBRE"];
+                    if (!(lector["Descripcion"] is DBNull))
+                        art.Descripcion = (string)lector["Descripcion"];
+                    if (!(lector["ImagenUrl"] is DBNull))
                     art.ImagenUrl = (string)lector["ImagenUrl"];
-                    art.Precio = (decimal)lector["Precio"];
+                    if (!(lector["Precio"] is DBNull))
+                        art.Precio = (decimal)lector["Precio"];
 
                     art.Marca = new Marca();
                     art.Marca.NombreMarca = (string)lector["Marca"];
@@ -72,7 +80,7 @@ namespace negocio
 
             try
             {
-              datos.setearConsulta("Insert into ARTICULOS (Codigo, Nombre, Descripcion, IdMarca, IdCategoria) values ('" + articuloNuevo.Codigo + "','" + articuloNuevo.Nombre + "','" + articuloNuevo.Descripcion + "', @idMarca, @idCategoria)");
+              datos.setearConsulta("Insert into ARTICULOS (Codigo, Nombre, Descripcion, IdMarca, IdCategoria, Precio, imagenUrl) values ('" + articuloNuevo.Codigo + "','" + articuloNuevo.Nombre + "','" + articuloNuevo.Descripcion + "', @idMarca, @idCategoria,'" + articuloNuevo.Precio+"','" + articuloNuevo.ImagenUrl+"' )");
                 datos.setearParametro("idMarca", articuloNuevo.Marca.Id);
                 datos.setearParametro("idCategoria", articuloNuevo.Categoria.Id);
                 datos.ejecutarAccion();

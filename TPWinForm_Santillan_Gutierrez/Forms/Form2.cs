@@ -43,6 +43,8 @@ namespace Forms
                 arti.Descripcion = txtDescripcion.Text;
                 arti.Categoria = (Categoria)cboCategoria.SelectedItem;
                 arti.Marca =  (Marca)cboMarca.SelectedItem;
+                arti.Precio = decimal.Parse(txtPrecio.Text);
+                arti.ImagenUrl = txtImagenUrl.Text;
 
                negocio.agregar(arti);
                 MessageBox.Show("Agregado Correctamente");
@@ -73,5 +75,26 @@ namespace Forms
                 
             }
         }
+
+
+        private void cargarImagen(string linkImg)
+        {
+            try
+            {
+                picboxArticulo.Load(linkImg);
+            }
+            catch (Exception ex)
+            {
+                picboxArticulo.Load("https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/681px-Placeholder_view_vector.svg.png");
+
+
+            }
+        }
+        private void textBox1_Leave(object sender, EventArgs e)
+        {
+            cargarImagen(txtImagenUrl.Text);
+        }
+
+
     }
 }

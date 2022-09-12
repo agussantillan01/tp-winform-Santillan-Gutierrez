@@ -21,15 +21,7 @@ namespace Forms
             InitializeComponent();
         }
 
-
-
-        private void btnAgregar_Click(object sender, EventArgs e)
-        {
-           FormAgregarArticulo ventana = new FormAgregarArticulo();
-            ventana.ShowDialog();
-        }
-
-        private void FormPrincipal_Load(object sender, EventArgs e)
+        private void cargar()
         {
             ArticuloNegocio negocio = new ArticuloNegocio();
             try
@@ -44,7 +36,20 @@ namespace Forms
 
                 MessageBox.Show(ex.ToString());
             }
+        }
 
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+           FormAgregarArticulo ventana = new FormAgregarArticulo();
+            ventana.ShowDialog();
+            cargar();
+        }
+
+
+        private void FormPrincipal_Load(object sender, EventArgs e)
+        {
+
+            cargar();
         }
         private void dgvComercio_SelectionChanged(object sender, EventArgs e)
         {
