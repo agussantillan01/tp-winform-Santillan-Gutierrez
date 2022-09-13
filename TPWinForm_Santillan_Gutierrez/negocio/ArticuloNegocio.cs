@@ -22,7 +22,7 @@ namespace negocio
             {
                 conexion.ConnectionString = "server=.\\SQLEXPRESS; database=CATALOGO_DB; integrated security = true";
                 comando.CommandType = System.Data.CommandType.Text;
-                comando.CommandText = "SELECT A.CODIGO, A.Nombre,A.Descripcion,M.Descripcion AS Marca,C.Descripcion AS TIPO,A.ImagenUrl, A.Precio FROM ARTICULOS A LEFT JOIN MARCAS M ON M.ID= A.IDMARCA LEFT JOIN CATEGORIAS C ON C.ID= A.IdCategoria\r\n";
+                comando.CommandText = "SELECT A.Id,A.CODIGO, A.Nombre,A.Descripcion,M.Descripcion AS Marca,C.Descripcion AS TIPO,A.ImagenUrl, A.Precio, A.IdCategoria, A.IdMarca FROM ARTICULOS A LEFT JOIN MARCAS M ON M.ID= A.IDMARCA LEFT JOIN CATEGORIAS C ON C.ID= A.IdCategoria";
                 comando.Connection = conexion;  
                 conexion.Open();
 
@@ -33,6 +33,7 @@ namespace negocio
                     //CODIGO, NOMBRE, DESCRIPCION, IMAGEN,CATEGORIA, MARCA Y PRECIO PERMITEN NULOS
                     // CATEGORIA Y MARCA NO ES POSIBLE QUE SE CARGUEN DE MANERA NULA
                     Articulo art = new Articulo();
+                    art.Id = (int)lector["Id"];
                     if (!(lector["CODIGO"] is DBNull))
                         art.Codigo = (string)lector["CODIGO"];
                     if (!(lector["NOMBRE"] is DBNull))
@@ -45,9 +46,12 @@ namespace negocio
                         art.Precio = (decimal)lector["Precio"];
 
                     art.Marca = new Marca();
+                    art.Marca.Id = (int)lector["IdMarca"];
                     art.Marca.NombreMarca = (string)lector["Marca"];
-                    art.Categoria = new Categoria();
 
+
+                    art.Categoria = new Categoria();
+                    art.Categoria.Id = (int)lector["IdCategoria"];
                     //SI EL TIPO DE ARTICULO NO ES NULO LO LEE
                     if (!(lector["TIPO"]is DBNull))
                     art.Categoria.Tipo = (string)lector["TIPO"];
@@ -97,6 +101,31 @@ namespace negocio
             }
 
 
+        }
+
+        public void Modificar(Articulo artModificado)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("UPDATE ARTICULOS SET Codigo=@Codigo , Descripcion = @Descripcion, ImagenUrl =@ImagenUrl, Precio =@Precio, IdCategoria=@IdCategoria, IdMarca =@IdMarca where Id=@Id");
+                datos.setearParametro("@Codigo", artModificado.Codigo);
+                datos.setearParametro("@Descripcion", artModificado.Descripcion);
+                datos.setearParametro("@ImagenUrl", artModificado.ImagenUrl);
+                datos.setearParametro("@Precio", artModificado.Precio);
+                datos.setearParametro("@IdCategoria", artModificado.Categoria.Id);
+                datos.setearParametro("@IdMarca", artModificado.Marca.Id);
+                datos.setearParametro("@Id", artModificado.Id);
+
+                datos.ejecutarAccion();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
 
     }

@@ -30,6 +30,8 @@ namespace Forms
                 dgvComercio.DataSource = articuloList;
                 dgvComercio.Columns["ImagenUrl"].Visible = false;
                 cargarImagen(articuloList[0].ImagenUrl);
+
+                dgvComercio.Columns["Id"].Visible = false;
             }
             catch (Exception ex)
             {
@@ -84,6 +86,16 @@ namespace Forms
                     e.ThrowException = false;
                 }
             }
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            Articulo seleccionado;
+            seleccionado = (Articulo)dgvComercio.CurrentRow.DataBoundItem;
+
+            FormAgregarArticulo modificar = new FormAgregarArticulo(seleccionado);
+            modificar.ShowDialog();
+            cargar();
         }
     }
 }

@@ -43,7 +43,7 @@
             // 
             this.btnAgregar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.btnAgregar.Location = new System.Drawing.Point(20, 308);
-            this.btnAgregar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAgregar.Margin = new System.Windows.Forms.Padding(2);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(115, 28);
             this.btnAgregar.TabIndex = 0;
@@ -54,7 +54,7 @@
             // btnEliminar
             // 
             this.btnEliminar.Location = new System.Drawing.Point(150, 308);
-            this.btnEliminar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnEliminar.Margin = new System.Windows.Forms.Padding(2);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(122, 28);
             this.btnEliminar.TabIndex = 2;
@@ -64,19 +64,20 @@
             // btnModificar
             // 
             this.btnModificar.Location = new System.Drawing.Point(296, 308);
-            this.btnModificar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnModificar.Margin = new System.Windows.Forms.Padding(2);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(122, 28);
             this.btnModificar.TabIndex = 3;
             this.btnModificar.Text = "Modificar Articulo";
             this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // dgvComercio
             // 
             this.dgvComercio.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvComercio.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvComercio.Location = new System.Drawing.Point(20, 62);
-            this.dgvComercio.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvComercio.Margin = new System.Windows.Forms.Padding(2);
             this.dgvComercio.MultiSelect = false;
             this.dgvComercio.Name = "dgvComercio";
             this.dgvComercio.RowHeadersWidth = 51;
@@ -90,7 +91,7 @@
             // picboxArticulo
             // 
             this.picboxArticulo.Location = new System.Drawing.Point(563, 62);
-            this.picboxArticulo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.picboxArticulo.Margin = new System.Windows.Forms.Padding(2);
             this.picboxArticulo.Name = "picboxArticulo";
             this.picboxArticulo.Size = new System.Drawing.Size(219, 241);
             this.picboxArticulo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -110,7 +111,7 @@
             // txtboxFiltroRapido
             // 
             this.txtboxFiltroRapido.Location = new System.Drawing.Point(96, 28);
-            this.txtboxFiltroRapido.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtboxFiltroRapido.Margin = new System.Windows.Forms.Padding(2);
             this.txtboxFiltroRapido.Name = "txtboxFiltroRapido";
             this.txtboxFiltroRapido.Size = new System.Drawing.Size(192, 20);
             this.txtboxFiltroRapido.TabIndex = 7;
@@ -127,7 +128,7 @@
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnAgregar);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Comercio";
