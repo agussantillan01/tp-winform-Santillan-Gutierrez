@@ -97,5 +97,29 @@ namespace Forms
             modificar.ShowDialog();
             cargar();
         }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            Articulo seleccionado;
+
+            try
+            {
+                DialogResult respuesta = MessageBox.Show("¿Realmente quiere eliminar?", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                if (respuesta == DialogResult.Yes)
+
+                {
+                seleccionado = (Articulo)dgvComercio.CurrentRow.DataBoundItem;
+                negocio.Eliminar(seleccionado.Id);
+                cargar();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                    MessageBox.Show(ex.ToString());
+            }
+        }
     }
 }
