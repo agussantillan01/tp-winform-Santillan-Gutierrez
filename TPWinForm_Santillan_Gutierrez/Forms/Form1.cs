@@ -24,8 +24,23 @@ namespace Forms
         private void ocultarColumnas()
         {
             dgvComercio.Columns["ImagenUrl"].Visible = false;
-
             dgvComercio.Columns["Id"].Visible = false;
+            dgvComercio.Columns["Marca"].Visible = false;
+            dgvComercio.Columns["Categoria"].Visible = false;
+            dgvComercio.Columns["Codigo"].Visible = false;
+        }
+        private void cargarImagen(string linkImg)
+        {
+            try
+            {
+                picboxArticulo.Load(linkImg);
+            }
+            catch (Exception ex)
+            {
+                picboxArticulo.Load("https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/681px-Placeholder_view_vector.svg.png");
+
+
+            }
         }
         private void cargar()
         {
@@ -74,19 +89,7 @@ namespace Forms
 
         }
 
-        private void cargarImagen(string linkImg)
-        {
-            try
-            {
-                picboxArticulo.Load(linkImg);
-            }
-            catch (Exception ex)
-            {
-                picboxArticulo.Load("https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/681px-Placeholder_view_vector.svg.png");
 
-
-            }
-        }
 
         private void dgvComercio_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
@@ -140,6 +143,7 @@ namespace Forms
             string opcion = cboxCampo.SelectedItem.ToString();
             if (opcion == "Precio")
             {
+                cboxCriterio.Items.Clear();
                 cboxCriterio.Items.Add("Mayor a");
                 cboxCriterio.Items.Add("Menor a");
                 cboxCriterio.Items.Add("Igual a");
@@ -193,6 +197,23 @@ namespace Forms
             ocultarColumnas();
 
 
+        }
+
+        private void btnVerTodo_Click(object sender, EventArgs e)
+        {
+            if (dgvComercio.Columns["Marca"].Visible == false)
+            {
+                cargar();
+                dgvComercio.Columns["Marca"].Visible = true;
+                dgvComercio.Columns["Categoria"].Visible = true;
+                dgvComercio.Columns["Codigo"].Visible = true;
+                this.btnVerTodo.Text = "Ver menos";
+            }
+            else
+            {
+                this.btnVerTodo.Text = "Ver Todo";
+                cargar();
+            }
         }
     }
 }

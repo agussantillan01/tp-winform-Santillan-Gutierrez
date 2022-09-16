@@ -40,6 +40,9 @@ namespace Forms
             ArticuloNegocio negocio = new ArticuloNegocio();
             try
             {
+    
+
+
                 if (articulo == null)
                     articulo = new Articulo();
                 
@@ -61,11 +64,19 @@ namespace Forms
                 }
                 else
                 {
-               negocio.agregar(articulo);
-                MessageBox.Show("Agregado Correctamente");
+                    if (articulo.Precio > 0 && articulo.Codigo.Length >2 && articulo.Descripcion.Length >2)
+                    {
+                       negocio.agregar(articulo);
+                       MessageBox.Show("Agregado Correctamente");
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Revise los datos ingresados...");
+                    }
 
                 }
-                    
+
 
                 Close();
             }
@@ -96,7 +107,7 @@ namespace Forms
                     txtNombreArticulo.Text= articulo.Nombre;
                     txtDescripcion.Text= articulo.Descripcion;
                     txtImagenUrl.Text = articulo.ImagenUrl;
-                        cargarImagen(articulo.ImagenUrl);
+                    cargarImagen(articulo.ImagenUrl);
                     txtPrecio.Text = articulo.Precio.ToString();
                     cboMarca.SelectedValue = articulo.Marca.Id;
                     cboCategoria.SelectedValue = articulo.Marca.Id;
