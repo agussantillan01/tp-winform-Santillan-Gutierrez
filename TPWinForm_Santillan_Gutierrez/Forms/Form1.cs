@@ -21,6 +21,12 @@ namespace Forms
             InitializeComponent();
         }
 
+        private void ocultarColumnas()
+        {
+            dgvComercio.Columns["ImagenUrl"].Visible = false;
+
+            dgvComercio.Columns["Id"].Visible = false;
+        }
         private void cargar()
         {
             ArticuloNegocio negocio = new ArticuloNegocio();
@@ -28,10 +34,8 @@ namespace Forms
             {
                 articuloList = negocio.listar();
                 dgvComercio.DataSource = articuloList;
-                dgvComercio.Columns["ImagenUrl"].Visible = false;
+                ocultarColumnas();
                 cargarImagen(articuloList[0].ImagenUrl);
-
-                dgvComercio.Columns["Id"].Visible = false;
             }
             catch (Exception ex)
             {
@@ -169,6 +173,25 @@ namespace Forms
 
                 MessageBox.Show(ex.ToString());
             }
+
+        }
+        private void txtboxFiltroRapido_TextChanged(object sender, EventArgs e)
+        {
+
+            List<Articulo> listaFiltrada;
+            string filtro = txtboxFiltroRapido.Text;
+
+            if (filtro != "")
+            {
+                listaFiltrada = articuloList.FindAll(x => x.Nombre.ToUpper().Contains(filtro.ToUpper()) || x.Descripcion.ToUpper().Contains(filtro.ToUpper()));
+            } else
+            {
+                listaFiltrada=articuloList;
+            }
+            dgvComercio.DataSource = null;
+            dgvComercio.DataSource = listaFiltrada;
+            ocultarColumnas();
+
 
         }
     }
