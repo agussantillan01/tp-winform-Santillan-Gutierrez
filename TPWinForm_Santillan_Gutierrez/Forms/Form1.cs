@@ -35,7 +35,7 @@ namespace Forms
             {
                 picboxArticulo.Load(linkImg);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 picboxArticulo.Load("https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/681px-Placeholder_view_vector.svg.png");
 
@@ -160,12 +160,56 @@ namespace Forms
 
         }
 
+        private bool validadFiltro()
+        {
+            if (cboxCampo.SelectedIndex < 0)
+            {
+                MessageBox.Show("Seleccione un campo para filtrar");
+                return true;
+            }
+            if (cboxCriterio.SelectedIndex < 0)
+            {
+                MessageBox.Show("Seleccione el criterio para filtrar");
+                return true;
+            }
+            if (cboxCampo.SelectedItem.ToString() == "Precio")
+            {
+                if (string.IsNullOrEmpty(txtFiltro.Text))
+                {
+                MessageBox.Show("");
+                return true;
+                }
+                if (!(soloNumeros(txtFiltro.Text)))
+                {     
+                MessageBox.Show("Solo numeros para la busqueda");
+                return true;
+                }
+            }
+        return false;
+        }
+        private bool soloNumeros(string cadena)
+        {
+                 foreach (char caracter in cadena)
+                {
+                    if (!(char.IsNumber(caracter)))
+                    
+                    return false;
+                    
+                 }
+                return true;
+        }
+
+
+
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             ArticuloNegocio negocio = new ArticuloNegocio();
                
             try
             {
+                if(validadFiltro()) 
+                    return;
+
             string campo = cboxCampo.SelectedItem.ToString();
             string criterio = cboxCriterio.SelectedItem.ToString();
             string filtro = txtFiltro.Text;
@@ -215,5 +259,7 @@ namespace Forms
                 cargar();
             }
         }
+
+
     }
 }

@@ -41,8 +41,6 @@ namespace Forms
             try
             {
     
-
-
                 if (articulo == null)
                     articulo = new Articulo();
                 
@@ -80,10 +78,10 @@ namespace Forms
 
                 Close();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show("Los datos ingresados son incorrectos o no ingreso ningun dato");
 
             }
         }
@@ -131,7 +129,7 @@ namespace Forms
             {
                 picboxArticulo.Load(linkImg);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 picboxArticulo.Load("https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/681px-Placeholder_view_vector.svg.png");
 
